@@ -113,7 +113,7 @@ function Item(props) {
     setLoaderHidden(false);
     const tokenActor = await Actor.createActor(tokenIdlFactory, {
       agent,
-      canisterId: Principal.fromText("renrk-eyaaa-aaaaa-aaada-cai"),
+      canisterId: Principal.fromText("qoctq-giaaa-aaaaa-aaaea-cai"),
     });
 
     const sellerId = await opend.getOriginalOwner(props.id);

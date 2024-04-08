@@ -6,8 +6,11 @@ import Minter from "./Minter";
 import Gallery from "./Gallery";
 import { opend } from "../../../declarations/opend";
 import CURRENT_USER_ID from "../index";
+import { AuthClient } from "@dfinity/auth-client";
+import End from "./End";
 
-function Header() {
+function Header(props) {
+
   const [userOwnedGallery, setOwnedGallery] = useState();
   const [listingGallery, setListingGallery] = useState();
 
@@ -28,6 +31,11 @@ function Header() {
   useEffect(() => {
     getNFTs();
   }, []);
+  
+  async function handleLogout(){
+    await props.authClient.logout();
+    renderIndex();
+  }
 
   return (
     <BrowserRouter forceRefresh={true}>
@@ -54,6 +62,9 @@ function Header() {
             <button className="ButtonBase-root Button-root Button-text header-navButtons-3">
               <a href="http://localhost:8081/">Wallet</a>
             </button>
+            <button className="ButtonBase-root Button-root Button-text header-navButtons-3" onClick={handleLogout}>
+              <Link to="/logout">Logout</Link>
+            </button>
           </div>
         </header>
       </div>
@@ -66,6 +77,7 @@ function Header() {
           <Minter />
         </Route>
         <Route path="/collection">{userOwnedGallery}</Route>
+        <Route path="/logout"></Route>
       </Switch>
     </BrowserRouter>
   );
