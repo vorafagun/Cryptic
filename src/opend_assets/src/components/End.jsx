@@ -1,10 +1,11 @@
 import * as React from "react";
+import Gallery from "./Gallery";
 
 
 
 function End(){
     return (<div>
-        <h1>Thank you</h1>
+        <Gallery title="Login" role="Login" />
     </div>);
 }
 

@@ -8,7 +8,6 @@ import { AuthClient } from "../../../node_modules/@dfinity/auth-client/lib/cjs/i
 import End from "./End";
 import { redirect } from "react-router-dom";
 
-
 function App(props) {
   return (
     <div className="App">

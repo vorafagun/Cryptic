@@ -6,8 +6,7 @@ import Minter from "./Minter";
 import Gallery from "./Gallery";
 import { opend } from "../../../declarations/opend";
 import CURRENT_USER_ID from "../index";
-import { AuthClient } from "@dfinity/auth-client";
-import End from "./End";
+import News from "./News";
 
 function Header(props) {
 
@@ -37,6 +36,10 @@ function Header(props) {
     renderIndex();
   }
 
+  function handleClick(){
+    console.log("Khachik");
+  }
+
   return (
     <BrowserRouter forceRefresh={true}>
       <div className="app-root-1">
@@ -46,12 +49,15 @@ function Header(props) {
             <img className="header-logo-11" src={logo} />
             <div className="header-vertical-9"></div>
             <Link to="/">
-              <h5 className="Typography-root header-logo-text">OpenD</h5>
+              <h5 className="Typography-root header-logo-text">Cryptic</h5>
             </Link>
             <div className="header-empty-6"></div>
             <div className="header-space-8"></div>
             <button className="ButtonBase-root Button-root Button-text header-navButtons-3">
               <Link to="/discover">Discover</Link>
+            </button>
+            <button className="ButtonBase-root Button-root Button-text header-navButtons-3">
+              <Link to="/news">News</Link>
             </button>
             <button className="ButtonBase-root Button-root Button-text header-navButtons-3">
               <Link to="/minter">Minter</Link>
@@ -70,9 +76,15 @@ function Header(props) {
       </div>
       <Switch>
         <Route exact path="/">
-          <img className="bottom-space" src={homeImage} />
+          <div>
+          <img className="bottom-space" src={homeImage}/>
+          </div>
+          
         </Route>
         <Route path="/discover">{listingGallery}</Route>
+        <Route path="/news">
+          <News />
+        </Route>
         <Route path="/minter">
           <Minter />
         </Route>
